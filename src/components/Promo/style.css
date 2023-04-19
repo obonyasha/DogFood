@@ -11,6 +11,8 @@
   
   .promo h3{
     grid-row-start: 1;
+    font-size: 10px;
+    text-transform: capitalize;
   }
   
   .promo-pic{
