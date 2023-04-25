@@ -8,7 +8,7 @@ const Footer = () => {
         </div>
         <div className="footer__cell footer__menu">
             <a href="">Каталог</a>
-            <a href="">ИЗбранное</a>
+            <a href="">Избранное</a>
             <a href="">Корзина</a>
         </div>
     </footer>

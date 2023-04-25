@@ -33,3 +33,25 @@ root.render(
   JSX - html c движком js
   <h1>123</h1> => React.createElement("h1", null, "123")
 */
+
+class Switch extends React.Component {
+  constructor(props) {
+    super(props);
+    this.className = `switch ${props.color} ${props.isActive ? 'on' : 'off'}`;
+  }
+  
+  render() {
+    return (
+    <div className={this.className}>
+      <button className="img" />
+      <h3>{this.props.title}</h3>
+    </div>
+  );
+}
+}
+
+ReactDOM.render((
+  <>
+    <Switch title="Счастье" color="blue" isActive={false} />
+  </>
+), document.querySelector('#root'));

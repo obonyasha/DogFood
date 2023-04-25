@@ -42,8 +42,8 @@ const App = () => {
                     name={el.name}
                     price={el.price}
                 />)}
-                <Footer/>
             </div>
+            <Footer/>
         </div>
     )
 }

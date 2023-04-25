@@ -6,11 +6,12 @@
     text-align: centers;
 }
 
-.logo img{
+.logo img {
     height: 50px;
 }
 
-header {
+header,
+footer {
     background-color: silver;
     color: black;
     display: flex;
@@ -21,5 +22,10 @@ header {
 
 .header__menu {
     display: flex;
+    gap: 20px;
+}
+
+.footer__cell {
+    display: grid;
     gap: 20px;
 }
