@@ -2,6 +2,7 @@ body {
   background-color: darkslateblue;
   color: #fff;
   font-family: sans-serif;
+  margin: 0;
 }
 
 h1,
@@ -15,9 +16,25 @@ a {
   text-decoration: none;
 }
 
+#root {
+   min-height: 100vh;
+   display: grid;
+   grid-auto-rows: auto 1fr auto;
+}
+
+main {
+  padding: 30px 50px;
+  display: grid;
+  align-content: flex-start;
+  gap: 20px;
+}
+
 .conteiner {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  padding: 30px 50px;
+}
+
+.conteiner .search-block {
+  grid-column-end:  span 4;
 }
