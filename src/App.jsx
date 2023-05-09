@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 // компоненты
 import Searh from "./components/Search";
@@ -12,7 +12,46 @@ import Profile from "./pages/Profile";
 
 const App = () => {
     const [user, setUser] = useState(localStorage.getItem("rockUser"));
+    const [token, setToken] = useState(localStorage.getItem("rockToken"));
+    const [serverGoods, setServerGoods] = useState([]); // товары из базы данных сервера
+    const [goods, setGoods] = useState(serverGoods); //товары для поиска и фильтрации
     const [modalActive, setModalActive] = useState(false);
+
+    // useEffect срабатывает каждый раз, когда компонент создался или перерисовался
+    useEffect(() => {
+        if (token) {
+            fetch("https://api.react-learning.ru/products", {
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log(data);
+                    setServerGoods(data.products);
+                })
+        }
+    }, [token])
+
+    useEffect(() => {
+        console.log("ook")
+        setGoods(serverGoods);
+    }, [serverGoods])
+
+    // useEffect(() => {
+    //     console.log("Modal edit");
+    // }, [modalActive])
+
+    useEffect(() => {
+        console.log("Change user");
+        if (user) {
+            setToken(localStorage.getItem("rockToken"))
+        } else {
+            setToken("")
+        }
+        console.log("u", user);
+    }, [user])
+
     return (
         <>
             <Header

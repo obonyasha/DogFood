@@ -8,6 +8,8 @@ const navigate = useNavigate();
         e.preventDefault();
         setUser("")// setUser() => setUser(null) 
         localStorage.removeItem("rockUser");
+        localStorage.removeItem("rockToken");
+        localStorage.removeItem("rockId");
         navigate("/"); //При выходе из профиля отправит на главную страницу
     }
 
