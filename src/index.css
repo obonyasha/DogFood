@@ -29,12 +29,12 @@ main {
   gap: 20px;
 }
 
-.conteiner {
+.container {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
 }
 
-.conteiner .search-block {
+.container .search-block {
   grid-column-end:  span 4;
 }

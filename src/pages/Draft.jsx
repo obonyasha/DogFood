@@ -24,7 +24,7 @@ while (n--) {
 const Draft = () => {
     const [goods, setGoods] = useState(cardsData);
     return (
-        <div className="conteiner">
+        <div className="container">
         <Searh arr={cardsData} upd={setGoods} />
         {adds.map((el, i) => <Promo key={i} {...el} />)}
         {goods.map((el, i) => <Card
