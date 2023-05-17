@@ -35,7 +35,7 @@ const App = () => {
     }, [token])
 
     useEffect(() => {
-        console.log("ook")
+        console.log("setGoods загружен")
         setGoods(serverGoods);
     }, [serverGoods])
 
@@ -63,7 +63,9 @@ const App = () => {
                 <Searh arr={serverGoods} upd={setGoods} />
                 <Routes>
                     <Route path="/" element={<Main />} />
-                    <Route path="/catalog" element={<Catalog goods={goods}/>} />
+                    <Route path="/catalog" element={<Catalog goods={goods} 
+                    //когда ставим лайк на товар - его нужно обновить в общем массиве с товарами (иначе лайк поставиться только в карточк, но после изменния в странице (переходе между страницами), его больше видно не будет)
+                    setServerGoods = {setServerGoods} />} />
                     <Route path="/draft" element={<Draft />} />
                     <Route path="/profile" element={
                         <Profile user={user} setUser={setUser} color="yellow" />
