@@ -1,7 +1,9 @@
-import { useState, useEffect } from "react";
-import "./style.css"
+import { useState, useEffect, useContext } from "react";
+import Ctx from "../../context";
+import "./style.css";
 
-const Searh = ({ arr, upd }) => {
+const Searh = ({ arr }) => {
+    const {setGoods} = useContext(Ctx);
     // let text = "Corn";
     const [text, setText] = useState("");
     const [quantity, setQuantity] = useState(arr.length);
@@ -10,10 +12,10 @@ const Searh = ({ arr, upd }) => {
     useEffect(() => {
         if (text) {
             let result = arr.filter(el => new RegExp(text, "i").test(el.name));
-            upd(result);
+            setGoods(result);
             setQuantity(result.length);
         } else {
-            upd(arr)
+            setGoods(arr)
             setQuantity(arr.length);
         }
     }, [arr]);
@@ -28,7 +30,7 @@ const Searh = ({ arr, upd }) => {
         setText(val);
         // let result = arr.filter(el => el.name.toLowerCase().includes(val.toLowerCase()));
         let result = arr.filter(el => new RegExp(val, "i").test(el.name));
-        upd(result);
+        setGoods(result);
         setQuantity(result.length);
         console.log(result);
     }
