@@ -1,8 +1,15 @@
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import { Folder2, Star, Cart4, PersonCircle, BoxArrowInRight } from "react-bootstrap-icons";
+import { useState, useEffect } from "react";
 
-const Header = ({ user, setModalActive }) => {
+const Header = ({ user, setModalActive, serverGoods, userId }) => {
+    const [likeCnt, setLikeCnt] = useState(0);
+    const [cardCnt, setCardCnt] = useState(0);
+
+    useEffect(() => {
+        setLikeCnt(serverGoods.filter(el => el.likes.includes(userId)).length)
+    }, [serverGoods])
 
     const logIn = (e) => {
         e.preventDefault();
@@ -21,11 +28,13 @@ const Header = ({ user, setModalActive }) => {
                 <Link to="/catalog" title="Каталог">
                     <Folder2 />
                 </Link>
-                <Link to="/" title="Избранное">
+                <Link to="/favorites" title="Избранное" className="badge__el">
                     <Star />
+                    <span className="badge__item">{likeCnt}</span>
                 </Link>
-                <Link to="/" title="Корзина">
+                <Link to="/" title="Корзина" className="badge__el">
                     <Cart4 />
+                    <span className="badge__item">{cardCnt}</span>
                 </Link>
                 <Link to="/profile" title="Профиль">
                     <PersonCircle />

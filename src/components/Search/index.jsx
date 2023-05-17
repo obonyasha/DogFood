@@ -1,12 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./style.css"
 
-const Searh = ({arr, upd}) => {
+const Searh = ({ arr, upd }) => {
     // let text = "Corn";
     const [text, setText] = useState("");
     const [quantity, setQuantity] = useState(arr.length);
 
     const [count, updateCount] = useState(0);
+    useEffect(() => {
+        if (text) {
+            let result = arr.filter(el => new RegExp(text, "i").test(el.name));
+            upd(result);
+            setQuantity(result.length);
+        } else {
+            upd(arr)
+            setQuantity(arr.length);
+        }
+    }, [arr]);
 
     let n = 1;
     const click = () => {

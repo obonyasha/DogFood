@@ -54,7 +54,7 @@ const Card = ({
     return <Link className="card" to={`/product/${_id}`}>
         {discount > 0 && <span className="card__discount"><Percent/> {discount}</span>}
         <span className="card__like" onClick={updLike}>
-            {isLike ? console.log("лайк есть") : <Heart/>}
+            {isLike ? <HeartFill />: <Heart/>}
         </span>
         <img src={img} alt="Картинка" className="card__img"/>
         <span className="card__name">{name}</span>
